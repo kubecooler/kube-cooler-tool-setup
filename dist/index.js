@@ -35,11 +35,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(2186));
 const exec_1 = __webpack_require__(1514);
 const fs = __importStar(__webpack_require__(5747));
 const yaml = __importStar(__webpack_require__(5065));
+const path_1 = __importDefault(__webpack_require__(5622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -49,9 +53,7 @@ function run() {
             const data = yaml.parse(fileContents);
             for (const tool of data.tools) {
                 //if there is a command, use the command directly
-                if (tool.command) {
-                    yield exec_1.exec(tool.command);
-                }
+                yield exec_1.exec(path_1.default.join(__dirname, 'tools', tool.name, 'install.sh'));
             }
             // core.info(yaml.stringify(data.tools[0].name))
         }

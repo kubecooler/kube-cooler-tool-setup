@@ -1,3 +1,0 @@
-tools:
-  - name: direnv
-    command: "curl -sfL https://direnv.net/install.sh | bash"

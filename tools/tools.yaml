@@ -1,2 +1,4 @@
 tools:
+  - name: golang
   - name: direnv
+  - name: kustomize
